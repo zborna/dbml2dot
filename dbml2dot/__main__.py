@@ -11,7 +11,7 @@ if __name__ == '__main__':
     parser.add_argument("-o", "--output", dest="output",
                         help="Output file (.dot), by default the input filename with .dot prefix",
                         default=None, required=False)
-    parser.add_argument("-d", "--label", dest="name", help="Name to show", default=None, required=False)
+    parser.add_argument("-l", "--label", dest="label", help="Label to show on top ERD", default=None, required=False)
     parser.add_argument("-d", "--debug", dest="debug", help="Enable debug output", default=False, action="store_true")
     parser.add_argument("-T", "--type", dest="type",
                         help="Output file type for graphviz. If not specified, don't output anything",
@@ -32,10 +32,10 @@ if __name__ == '__main__':
     else:
         output_path = pathlib.Path(args.output)
 
-    if args.name is None:
+    if args.label is None:
         graph_name = ''
     else:
-        graph_name = pathlib.Path(args.name)
+        graph_name = pathlib.Path(args.label)
 
     with open(input_path, 'r') as f:
         input_data = f.read()
